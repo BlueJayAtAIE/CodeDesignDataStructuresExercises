@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cassert>
 #pragma once
 
 template <typename T>
@@ -23,7 +24,7 @@ public:
 	// Copy constructs a vector from another.
 	tVector(const tVector &vec)
 	{
-
+		*this = vec;
 	}
 
 	// Destroys the underlying array.
@@ -67,6 +68,8 @@ public:
 		if (arrSize == arrCapacity)
 		{
 			// If it does, run reserve real fast.
+			// I COULD do arrCapacity * 2 in here but I wanted to actually use GROWTH_FACTOR.
+			// Plus doubling it every time seems like a bit much.
 			reserve(arrCapacity + GROWTH_FACTOR);
 		}
 		// Add value to the array at size, then size++.
@@ -84,10 +87,15 @@ public:
 	// Returns the element at the given index.
 	T &at(size_t index)               
 	{
-		if (index >= arrSize)
+		if ((index >= arrSize || index < 0))
 		{
 			std::cout << "Error! Trying to get a number out of range." << std::endl;
 		}
+
+		// You should use this assert, but since this debug test replies on things going out of bounds 
+		// for demonstrative purposes, thats counter productive.
+		//assert((index >= arrSize || index < 0) && "Error! Trying to get a number out of range.");
+
 		return arr[index];
 	}
 
@@ -113,17 +121,27 @@ public:
 	}
 
 	// Resizes the vector to contain the given number of elements.
-	void resize(size_t newCapacity)             
+	void resize(size_t t)             
 	{
-		// TODO: THIS NEEDS WORK STILL.
-		if (newCapacity > arrCapacity)
+		// If t is greater than arrCapacity, then reallocate (reserve).
+		if (t > arrCapacity)
 		{
-			reserve(newCapacity);
+			reserve(t);
 		}
 
-		if (newCapacity < arrCapacity)
+		// If t is greater than arrSize but less than arrCapacity, set values in cells up to t with a value (0 maybe?)
+		if (t > arrSize && t <= arrCapacity)
 		{
-			for (size_t i = 0; i < (arrCapacity - newCapacity); i++)
+			for (size_t i = arrSize; i < t; i++)
+			{
+				pushBack(0);
+			}
+		}
+
+		// if t is smaller than arrSize, it is reduced to t via popBack.
+		if (t < arrSize)
+		{
+			for (size_t i = 0; i < t; i++)
 			{
 				popBack();
 			}
@@ -133,14 +151,16 @@ public:
 	// Resizes the capacity to match it's size.
 	void shrinkToFit()                
 	{
-		// TODO
+		arrCapacity = arrSize;
 	}
 
-	// Empties the vector, destrying all elements (but not destroying the vector!).
+	// Empties the vector, destrying all elements (but not destroying the vector!). This also changes size back to 0.
 	void clear()                      
 	{
-		// TODO I'm not sure if this counts as deleting everything- technically it's all still there.
-		// OH SH-OO-T MAYBE REPLACE ALL THE OTHER STUFF WITH NULL?
+		for (size_t i = arrSize; i > 0; i--)
+		{
+			popBack();
+		}
 		arrSize = 0;
 	}
 
@@ -149,16 +169,19 @@ public:
 	// Copies the conents FROM THE PROVIDED vector TO THIS vector
 	tVector& operator=(const tVector &vec)
 	{
-		size_t whosGreater;
-		if (arrSize > vec.arrSize) whosGreater = arrSize;
-		else whosGreater = vec.arrSize;
+		reserve(vec.arrCapacity);
 
-		for (size_t i = 0; i < whosGreater; i++)
+		for (size_t i = 0; i < vec.arrSize; i++)
 		{
-			arr[i] = vec.arr[i];
+			pushBack(vec.arr[i]);
 		}
 
-		arrSize = vec.arrSize;
+		return *this;
+	}
+
+	T& operator[] (size_t index)
+	{
+		return arr[index];
 	}
 };
 
