@@ -98,6 +98,13 @@ int main()
 	cout << "My size is: " << test.size() << endl;
 	cout << "My capacity is: " << test.capacity() << endl;
 	// ---------------------------------------------------------------------------------------------------------------
+	cout << endl << "Copy Test 3: The Revengance:" << endl;
+	cout << "Hey, heres the number at index 0 (of the second vector): " << copy.at(0) << endl;
+	cout << "Hey, heres the number at index 1 (of the second vector): " << copy.at(1) << endl;
+	cout << "Hey, heres the number at index 2 (of the second vector): " << copy.at(2) << endl;
+	cout << "Hey, heres the number at index 3 (of the second vector) (not assigned): " << copy.at(3) << endl;
+	cout << "THESE VALUES SHOULD BE THE SAME AS AT THE END OF THE OTHER TESTS." << endl;
+	// ---------------------------------------------------------------------------------------------------------------
 	cout << endl << "Final Test:" << endl;
 	cout << "Hey, heres the number at index -1: " << test.at(-1) << endl;
 
