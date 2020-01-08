@@ -188,3 +188,103 @@ public:
 	}
 };
 
+template <typename T>
+class tStack
+{
+	// Contains the data for the stack.
+	tVector<T> vec;
+
+public:
+	// Initializes the Stack's default values.
+	tStack()
+	{
+		tVector<T> temp;
+		vec = temp;
+	}
+
+	// Adds an element to the top of the Stack.
+	void push(const T& value)
+	{
+		vec.pushBack(value);
+	}
+
+	// Drops the top most element of the Stack.
+	void pop()
+	{
+		vec.popBack();
+	}
+
+	// Returns the top most element of the Stack.
+	T& top()
+	{
+		return vec[vec.size() - 1];
+	}
+
+	// Returns the top most element of the Stack (const).
+	const T& top() const
+	{
+		return vec[vec.size() - 1];
+	}
+
+	// Returns the current number of elements.
+	size_t size() const
+	{
+		return vec.size();
+	}
+
+	// Returns true if empty, otherwise false.
+	bool empty() const
+	{
+		return vec.empty();
+	}
+};
+
+template <typename T>
+class tQueue
+{
+	tVector<T> vec;
+
+public:
+	// Default initialization.
+	tQueue()
+	{
+
+	}
+
+	// Constructs a Queue with the given number of elements.
+	// Each element is initialized by copying the given value.
+	tQueue(size_t count, const T& value)
+	{
+
+	}
+
+	// Adds an element to the top of the Queue.
+	void push(const T& value)
+	{
+
+	}
+
+	// Drops the top-most element of the Queue.
+	void pop()
+	{
+
+	}
+
+	// Returns front-most element.
+	T& front()
+	{
+
+	}
+
+	// Returns the current number of elements.
+	size_t size() const
+	{
+		return vec.size();
+	}
+
+	// Returns true if empty, otherwise false.
+	bool empty() const
+	{
+		return vec.empty();
+	}
+};
