@@ -19,7 +19,7 @@ int main()
 	cout << "Hey, heres the number at index 1: " << test[1] << endl;
 	test.pushBack(6);
 	cout << "Hey, heres the number at index 2: " << test[2] << endl;
-	cout << "Hey, heres the number at index 3 (not assigned): " << test[3] << endl;
+	cout << "Hey, heres the number at index 3 (not assigned): " << test.at(3) << endl;
 	// ---------------------------------------------------------------------------------------------------------------
 	cout << endl << "Copy Test:" << endl;
 	tVector<int> copy(test);
@@ -27,7 +27,7 @@ int main()
 	cout << "Hey, heres the number at index 0 (of the second vector): " << copy[0] << endl;
 	cout << "Hey, heres the number at index 1 (of the second vector): " << copy[1] << endl;
 	cout << "Hey, heres the number at index 2 (of the second vector): " << copy[2] << endl;
-	cout << "Hey, heres the number at index 3 (of the second vector) (not assigned): " << copy[3] << endl;
+	cout << "Hey, heres the number at index 3 (of the second vector) (not assigned): " << copy.at(3) << endl;
 	// ---------------------------------------------------------------------------------------------------------------
 	cout << endl << "Popback Test:" << endl;
 	test.popBack();
@@ -101,6 +101,6 @@ int main()
 	cout << endl << "Final Test:" << endl;
 	cout << "Hey, heres the number at index -1: " << test.at(-1) << endl;
 
-	while (true) { }
+
 	return 0;
 }
