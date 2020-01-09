@@ -25,13 +25,13 @@ public:
 		// Initializes an empty iterator pointing to NULL.
 		iterator()
 		{
-
+			current = nullptr;
 		}
 
 		// Initializes an empty iterator pointing to the given Node.
 		iterator(Node * startNode)
 		{
-
+			current = startNode;
 		}
 
 
@@ -50,7 +50,7 @@ public:
 		// Returns a reference to the element pointed to by the current Node.
 		T& operator*() const
 		{
-
+			return current->data;
 		}
 
 		// Pre-increment (returns a reference to this iterator after it is incremented).
@@ -66,10 +66,24 @@ public:
 		}
 	};
 
+	iterator begin()
+	{
+		iterator temp(head);
+		return temp;
+	}
+
+	iterator end()
+	{
+		// TODO: You need to get this working for most of the functions down in the LinkedList class.
+	}
+
 	// Initializes Head to NULL.
 	tLinkedList()
 	{
-
+		Node * temp = new Node;
+		temp->data = NULL;
+		temp->next = nullptr; // Is this needed? Maybe not but but helps me read this better.
+		head = temp;
 	}
 
 	// Copy-Constructor.
@@ -81,44 +95,43 @@ public:
 	// Delete all nodes upon destruction.
 	~tLinkedList()
 	{
-
+		// TODO
 	}
-
-	iterator begin();
-
-	iterator end();
 
 	// Adds an element to the front (Head).
 	void pushfront(const T& val)
 	{
-		Node temp = new Node;
-		temp.data = val;
-		temp.next = head;
-		head = temp; // TODO: Test: Does this need to be *temp or just temp?
+		Node * temp = new Node;
+		temp->data = val;
+		temp->next = head;
+		head = temp;
 	}
 
 	// Removes element from the front.
 	void popFront()
 	{
-
+		if (head->data != NULL)
+		{
+			// TODO
+		}
 	}
 
 	// Returns the element at the head.
 	T& front()
 	{
-		return head.data;
+		return head->data;
 	}
 
 	// Returns the element at the head (const).
 	const T& front() const
 	{
-		return head.data;
+		return head->data;
 	}
 
 	// Removes ALL elements equal to the value.
 	void remove(const T& val)
 	{
-
+		
 	}
 
 	// Returns true if there are no elements.

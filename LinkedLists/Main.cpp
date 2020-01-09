@@ -7,9 +7,9 @@ using std::endl;
 
 int main()
 {
+	tLinkedList<int> blah;
 
-
-
+	blah.pushfront(4);
 
 
 
