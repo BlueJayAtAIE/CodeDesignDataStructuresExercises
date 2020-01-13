@@ -126,7 +126,31 @@ void HighScoreTable::printValues()
 	}
 }
 
-void HighScoreTable::saveToFile()
+void HighScoreTable::saveToFile(string fileName)
 {
+	// Open highscore file.
+	std::fstream file;
+	file.open(fileName, std::ios::out);
+	if (!file.is_open())
+	{
+		std::cerr << "Something went wrong! File not found." << std::endl;
+	}
 
+	// For each entry in hsVector...
+	for (size_t i = 0; i < hsVector.size(); i++)
+	{
+		// Print the values of the highscore entry into the file, separated by a ,.
+		file << hsVector[i].name << "," << hsVector[i].score << "," << hsVector[i].level;
+
+		// As long as this isn't the last entry, start a new line.
+		if (i != hsVector.size() - 1)
+		{
+			file << std::endl;
+		}
+
+		file.flush();
+	}
+
+	// CLOSE HIGHSCORE FILE!!!!
+	file.close();
 }

@@ -37,5 +37,5 @@ public:
 	void printValues();
 
 	// Save the conents of hsVector back to highscores.txt in CSV format.
-	void saveToFile();
+	void saveToFile(string fileName);
 };

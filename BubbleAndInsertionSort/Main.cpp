@@ -6,15 +6,19 @@ using std::vector;
 
 int main()
 {
-	HighScoreTable hst("highscores.txt");
+	std::string highscoreTex = "highscores.txt";
+
+	HighScoreTable hst(highscoreTex);
 	hst.printValues();
 	std::cout << std::endl;
 
-	//hst.bubbleSort();
+	hst.bubbleSort();
 	// Uncomment one of these to see them work!!
-	hst.insertionSort();
+	//hst.insertionSort();
 
 	hst.printValues();
+
+	//hst.saveToFile(highscoreTex);
 
 	//vector<HighScoreEntry> topScores = hst.topNNScores(10);
 	//// Below is copied from HighScoreTable's printValues() function.
