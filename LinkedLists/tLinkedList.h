@@ -38,13 +38,23 @@ public:
 		// Returns true if the iterator points to the same node.
 		bool operator==(const iterator& rhs) const 
 		{
+			if (current->data == rhs.current->data && current->next == rhs.current->next)
+			{
+				return true;
+			}
 
+			return false;
 		}
 
-		// Returns false if the iterator does not point to the same node.
+		// Returns true if the iterator does not point to the same node.
 		bool operator!=(const iterator& rhs) const
 		{
+			if (current->data != rhs.current->data && current->next != rhs.current->next)
+			{
+				return true;
+			}
 
+			return false;
 		}
 
 		// Returns a reference to the element pointed to by the current Node.
@@ -56,13 +66,14 @@ public:
 		// Pre-increment (returns a reference to this iterator after it is incremented).
 		iterator& operator++()
 		{
-
+			current = current->next;
+			return *this;
 		}
 
 		// Post-increment (returns an iterator to the current Node while incrementing the existing iterator).
-		iterator& operator++(int)
+		iterator operator++(int)
 		{
-
+			return (*this)++;
 		}
 	};
 
@@ -74,7 +85,12 @@ public:
 
 	iterator end()
 	{
-		// TODO: You need to get this working for most of the functions down in the LinkedList class.
+		iterator temp(head);
+		while (*temp != NULL)
+		{
+			++temp;
+		}
+		return temp;
 	}
 
 	// Initializes Head to NULL.
@@ -99,7 +115,7 @@ public:
 	}
 
 	// Adds an element to the front (Head).
-	void pushfront(const T& val)
+	void pushFront(const T& val)
 	{
 		Node * temp = new Node;
 		temp->data = val;
@@ -131,32 +147,50 @@ public:
 	// Removes ALL elements equal to the value.
 	void remove(const T& val)
 	{
-		
+		for (auto it = begin(); it != end(); ++it)
+		{
+			if (true)
+			{
+				// TODO
+			}
+		}
 	}
 
 	// Returns true if there are no elements.
 	bool empty() const
 	{
-		if (head == NULL) return true;
+		if (head->data == NULL && head->next == nullptr) return true;
 		return false;
 	}
 
 	// Destroys every single node in the linked list (but doesn't destroy the list itself!).
 	void clear()
 	{
-
+		// TODO
 	}
 
 	// Resizes the linked list to contain the given number of elements.
 	// New elements are default-initialized.
 	void resize(size_t newSize)
 	{
+		int currentSize = 0;
+		for (auto it = begin(); it != end(); ++it)
+		{
+			currentSize++;
+		}
 
+		if (newSize > currentSize)
+		{
+			for (size_t i = currentSize; i < newSize; i++)
+			{
+				pushFront(0); // TODO, having this be 0 messes with iterators going through, who see 0 as NULL.
+			}
+		}
 	}
 
 	// Copy-assignment.
 	tLinkedList& operator=(const tLinkedList & rhs)
 	{
-
+		// TODO
 	}
 };
