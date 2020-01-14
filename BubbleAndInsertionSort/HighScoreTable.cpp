@@ -118,6 +118,56 @@ void HighScoreTable::insertionSort()
 	}
 }
 
+void HighScoreTable::Merge(size_t p, size_t q, size_t r)
+{
+	size_t leftEnd = q - p + 1;
+	size_t rightEnd = r - q;
+
+	// Create two empty containers.
+	vector<HighScoreEntry> containerL;
+	containerL.resize(leftEnd);
+	vector<HighScoreEntry> containerR;
+	containerR.resize(rightEnd);
+
+	// Copy values from hsVector to the respective containers.
+	for (size_t i = 0; i < leftEnd; i++)
+	{
+		containerL[i] = hsVector[p + i];
+	}
+	for (size_t j = 0; j < rightEnd; j++)
+	{
+		containerR[j] = hsVector[q + j + 1];
+	}
+
+	size_t i = 0;
+	size_t j = 0;
+
+	for (size_t k = p; k <= r; k++)
+	{
+		if ((j >= rightEnd) || (i < leftEnd && containerL[i].score <= containerR[j].score))
+		{
+			hsVector[k] = containerL[i];
+			i++;
+		}
+		else
+		{
+			hsVector[k] = containerR[j];
+			j++;
+		}
+	}
+}
+
+void HighScoreTable::MergeSort(size_t p, size_t r)
+{
+	if (p < r)
+	{
+		size_t q = (p + r) / 2;
+		MergeSort(p, q);
+		MergeSort(q + 1, r);
+		Merge(p, q, r);
+	}
+}
+
 void HighScoreTable::printValues()
 {
 	for (size_t i = 0; i < hsVector.size(); i++)

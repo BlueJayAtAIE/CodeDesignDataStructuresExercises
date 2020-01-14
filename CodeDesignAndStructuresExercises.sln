@@ -13,7 +13,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LinkedLists", "LinkedLists\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StacksAndQueues", "StacksAndQueues\StacksAndQueues.vcxproj", "{4E589971-4F8E-4809-A10A-F7CFFCB020BD}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BubbleAndInsertionSort", "BubbleAndInsertionSort\BubbleAndInsertionSort.vcxproj", "{850F7FFB-4F1A-43ED-8AEF-0D16C5770CB9}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BubbleAndInsertionAndMergeSort", "BubbleAndInsertionSort\BubbleAndInsertionSort.vcxproj", "{850F7FFB-4F1A-43ED-8AEF-0D16C5770CB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

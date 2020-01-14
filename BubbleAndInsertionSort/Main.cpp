@@ -12,9 +12,10 @@ int main()
 	hst.printValues();
 	std::cout << std::endl;
 
-	hst.bubbleSort();
 	// Uncomment one of these to see them work!!
+	//hst.bubbleSort();
 	//hst.insertionSort();
+	hst.MergeSort(0, (hst.hsVector.size() - 1));
 
 	hst.printValues();
 
