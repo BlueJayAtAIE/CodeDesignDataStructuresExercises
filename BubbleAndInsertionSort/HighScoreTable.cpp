@@ -59,18 +59,18 @@ vector<HighScoreEntry> HighScoreTable::topNNScores(int topRows)
 
 bool HighScoreTable::pruneBottomNNScores(int bottomRows)
 {
-	size_t initialSize = hsVector.size();
+	if (bottomRows > hsVector.size())
+	{
+		// Can't remove that many! Thats outside the bounds of the array.
+		return false;
+	}
+
 	for (size_t i = 0; i < bottomRows; i++)
 	{
 		hsVector.pop_back();
 	}
-	
-	if (initialSize - bottomRows == hsVector.size())
-	{
-		return true;
-	}
 
-	return false;
+	return true;
 }
 
 void HighScoreTable::bubbleSort()
