@@ -128,7 +128,7 @@ public:
 	{
 		if (head->data != NULL)
 		{
-			// TODO
+			head = head->next;
 		}
 	}
 
@@ -166,7 +166,10 @@ public:
 	// Destroys every single node in the linked list (but doesn't destroy the list itself!).
 	void clear()
 	{
-		// TODO
+		for (auto it = begin(); it != end(); ++it)
+		{
+			popFront();
+		}
 	}
 
 	// Resizes the linked list to contain the given number of elements.
@@ -183,7 +186,7 @@ public:
 		{
 			for (size_t i = currentSize; i < newSize; i++)
 			{
-				pushFront(0); // TODO, having this be 0 messes with iterators going through, who see 0 as NULL.
+				pushFront(1); // TODO, having this be 0 messes with iterators going through, who see 0 as NULL.
 			}
 		}
 	}
