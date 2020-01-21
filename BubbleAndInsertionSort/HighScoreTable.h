@@ -33,7 +33,7 @@ public:
 	// Using the Insertion Sort method, organizes the enries in descending order.
 	void insertionSort();
 
-	// Accepts a range of elements to sort. Used as part of the MergeSort function to merge subsections of the array.
+	// Accepts a range of elements to sort. !! Used as part of the MergeSort function to merge subsections of the array. !!
 	// p is the first index to start merging and sorting from.
 	// q is the index between p and r.
 	// r is the last index to merge and sort through.

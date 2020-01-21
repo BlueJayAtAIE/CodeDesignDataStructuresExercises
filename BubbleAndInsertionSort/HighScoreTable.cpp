@@ -139,9 +139,12 @@ void HighScoreTable::Merge(size_t p, size_t q, size_t r)
 		containerR[j] = hsVector[q + j + 1];
 	}
 
+	// Used for navigating the temp arrays.
 	size_t i = 0;
 	size_t j = 0;
 
+	// Compares the values in containerL and containerR, then
+	// copies the value accordingly back to the array we actually use.
 	for (size_t k = p; k <= r; k++)
 	{
 		if ((j >= rightEnd) || (i < leftEnd && containerL[i].score <= containerR[j].score))
@@ -161,7 +164,9 @@ void HighScoreTable::MergeSort(size_t p, size_t r)
 {
 	if (p < r)
 	{
+		// q here is the middle of the array/vector (in this case).
 		size_t q = (p + r) / 2;
+
 		MergeSort(p, q);
 		MergeSort(q + 1, r);
 		Merge(p, q, r);
