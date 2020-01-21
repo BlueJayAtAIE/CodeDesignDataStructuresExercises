@@ -16,7 +16,7 @@ int main()
 		cout << "----------------------------------------------------------" << endl;
 		switch (GameState::GetInstance().getState())
 		{
-		case 0:
+		case MainMenu:
 			// Main Menu
 			cout << "You're on the Main Menu. Press [S] to start." << endl;
 			cin >> userInput;
@@ -30,7 +30,7 @@ int main()
 				cout << "I don't recognize that command..." << endl;
 			}
 			break;
-		case 1:
+		case PlayerSelect:
 			// Player Choice
 			cout << "Choose [R]ock, [P]aper, or [S]cissors." << endl;
 			cin >> userInput;
@@ -44,7 +44,7 @@ int main()
 				GameState::GetInstance().setState(InGame);
 			}
 			break;
-		case 2:
+		case InGame:
 			// In-game
 			// Convert a possible lowercase to uppercase just to make the following bits easier.
 			if (userInput >= 97 && userInput <= 122)
@@ -102,7 +102,7 @@ int main()
 
 			GameState::GetInstance().setState(GameOver);
 			break;
-		case 3:
+		case GameOver:
 			// Game Over
 			cout << "Game Over! Press [S] to play again, or [Q] to quit." << endl;
 			cin >> userInput;
